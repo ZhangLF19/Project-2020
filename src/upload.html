@@ -1,0 +1,88 @@
+﻿
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <title>上传</title>
+    <link rel="stylesheet" type="text/css" href="../css/upload.css">
+</head>
+<body>
+    <!--导航栏-->
+    <div class="menu">
+        <ul name="top">
+            <li ><a href="../index.html">Home</a></li>
+            <li><a href="browse.html">Browse</a></li>
+            <li ><a href="search.html">Search</a></li>
+            <div class="dropdown">
+                <a href="" class="dropbtn">My Account</a>
+                <div class="dropdown-content">
+                    <a href="upload.html"><img src="../images/img/upLoad.jpg"> upload</a>
+                    <a href="myphoto.html"><img src="../images/img/myPhotos.jpg"> my photo</a>
+                    <a href="my%20favorite.html" id="myfavourite"><img src="../images/img/1.jpg"> my favourite</a>
+                    <a href="log.html"><img src="../images/img/3.jpg"> sign in</a>
+                </div>
+        </div>
+      </ul>
+    </div>
+    <!--标题-->
+    <h2>上传你的照片</h2>
+    <!--主体，采用grid布局-->
+    <div class="content">
+        <div class="picture" id="imgPreview">
+            <img src="../images/travel-images/normal/medium/9494282329.jpg">
+        </div>
+        <div>
+           <h3>Title :</h3>
+           <input type="text" name="title">
+        </div>
+        <div>
+           <h3>Theme :</h3>
+           <input type="text" name="theme">
+        </div>
+        <div>
+           <h3>Countary :</h3>
+           <input type="text" name="country">
+        </div>
+        <div>
+           <h3>City :</h3>
+           <input type="text" name="city">
+        </div>
+        </div>
+    <!--描述输入框-->
+    <div class="des">
+      <h3>Description :</h3>
+      <input type="text" name="description">
+    </div>
+    <!--两个按钮-->
+    <div class="put">
+        <div><button onclick="upload();">choose</button>
+            <input type="file" onchange='PreviewImage(this)' id="File" style="display: none">
+        </div>
+        <div><a href="myphoto.html"><button onclick="alert('上传成功.')">submit</button></a></div>
+    </div>
+    <!--页脚-->
+    <div class="bottom">@19302010052@fudan.edu.cn</div>
+    <script>
+        /*将choose按钮与选择文件关联*/
+       function upload(){
+          var file = document.getElementById("File");
+          file.click();
+        }
+        /*实现图片预览*/
+       function PreviewImage(imgFile) {
+           /*允许下列文件格式*/
+          var pattern = /(\.*.jpg$)|(\.*.png$)|(\.*.jpeg$)|(\.*.gif$)/;
+          if (!pattern.test(imgFile.value)) {
+              alert("系统仅支持jpg/jpeg/png/gif/bmp格式的照片！");
+              imgFile.focus();
+          }
+          else {
+              var path;
+                  path = URL.createObjectURL(imgFile.files[0]);
+                  document.getElementById("imgPreview").innerHTML = "<img src='"+path+"'/>";
+              }
+       }
+    </script>
+</body>
+</html>
